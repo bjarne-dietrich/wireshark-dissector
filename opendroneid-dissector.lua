@@ -321,7 +321,7 @@ function odid_messageSubTree(buffer,subtree,msg_start,treeIndex,size)
         
         subFlag_ewDirectionSegment = bit32.extract(buffer(msg_start+1,1):int(),1,1)
         if subFlag_ewDirectionSegment == 1 then --Adding 180 to direction if segment bit is set
-            subsub[treeIndex]:add_le(odid_loc_direction, buffer(msg_start+2,1))
+            subsub[treeIndex]:add_le(odid_loc_direction, (buffer(msg_start+2,1) + 180))
         else
             subsub[treeIndex]:add_le(odid_loc_direction, buffer(msg_start+2,1))
         end
