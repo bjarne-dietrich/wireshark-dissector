@@ -272,7 +272,7 @@ odid_protocol.fields = {
     odid_loc_flag_ewDirectionSegment, odid_loc_flag_heightType, odid_loc_flag_speedMultiplier,
 
     odid_loc_status, odid_loc_flags, odid_loc_direction, odid_loc_speed, odid_loc_vspeed, odid_loc_lat,
-    odid_loc_lon, odid_loc_pressAlt, odid_loc_geoAlt, odid_loc_height, odid_loc_hAccuracy, odid_loc_vAccuracy,
+    odid_loc_lon, odid_loc_pressAlt, odid_loc_geoAlt, odid_loc_height, odid_loc_vAccuracy, odid_loc_hAccuracy,
     odid_loc_baroAccuracy, odid_loc_speedAccuracy, odid_loc_timeStamp, odid_loc_tsReserved, odid_loc_tsAccuracy,
     odid_loc_reserved,
 
@@ -326,8 +326,8 @@ function odid_messageSubTree(buffer,subtree,msg_start,treeIndex,size)
         subsub[treeIndex]:add_le(odid_loc_pressAlt, buffer(msg_start+13,2))
         subsub[treeIndex]:add_le(odid_loc_geoAlt, buffer(msg_start+15,2))
         subsub[treeIndex]:add_le(odid_loc_height, buffer(msg_start+17,2))
-        subsub[treeIndex]:add_le(odid_loc_hAccuracy, buffer(msg_start+19,1))
         subsub[treeIndex]:add_le(odid_loc_vAccuracy, buffer(msg_start+19,1))
+        subsub[treeIndex]:add_le(odid_loc_hAccuracy, buffer(msg_start+19,1))
         subsub[treeIndex]:add_le(odid_loc_baroAccuracy, buffer(msg_start+20,1))
         subsub[treeIndex]:add_le(odid_loc_speedAccuracy, buffer(msg_start+20,1))
         subsub[treeIndex]:add_le(odid_loc_timeStamp, buffer(msg_start+21,2))
