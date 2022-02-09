@@ -318,7 +318,13 @@ function odid_messageSubTree(buffer,subtree,msg_start,treeIndex,size)
         subsub[treeIndex]:add_le(odid_loc_flag_heightType, buffer(msg_start+1,1))
         subsub[treeIndex]:add_le(odid_loc_flag_ewDirectionSegment, buffer(msg_start+1,1))
         subsub[treeIndex]:add_le(odid_loc_flag_speedMultiplier, buffer(msg_start+1,1))
-        subsub[treeIndex]:add_le(odid_loc_direction, buffer(msg_start+2,1))
+        
+        subFlag_ewDirectionSegment = bit32.extract(buffer(msg_start+1,1):int(),1,1)
+        if subFlag_ewDirectionSegment == 1 then --Adding 180 to direction if segment bit is set
+            subsub[treeIndex]:add_le(odid_loc_direction, buffer(msg_start+2,1))
+        else
+            subsub[treeIndex]:add_le(odid_loc_direction, buffer(msg_start+2,1))
+        end
         subsub[treeIndex]:add_le(odid_loc_speed, buffer(msg_start+3,1))
         subsub[treeIndex]:add_le(odid_loc_vspeed, buffer(msg_start+4,1))
         subsub[treeIndex]:add_le(odid_loc_lat, buffer(msg_start+5,4))
